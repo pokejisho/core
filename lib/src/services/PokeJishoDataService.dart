@@ -1,14 +1,13 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:pokejisho_core/src/models/pokejisho_entry.dart';
+import 'package:pokejisho_core/src/raw_data_entries_string.dart';
 
 class PokeJishoDataService {
   String rawDataString;
 
   Future<String> getRawFileData() async {
-    final rawDataString = await File('./assets/data.json');
-    return await rawDataString.readAsString();
+    return rawDataEntriesString;
   }
 
   List<dynamic> getJsonFromData(String rawData) {

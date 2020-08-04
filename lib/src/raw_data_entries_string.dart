@@ -1,3 +1,4 @@
+String rawDataEntriesString = '''
 [
   {
     "type": "Ability",
@@ -29610,3 +29611,4 @@
     "romaji": "bureijingusourubiito"
   }
 ]
+''';
