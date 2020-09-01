@@ -10,18 +10,16 @@ class PokeJishoDataService {
     return rawDataEntriesString;
   }
 
-  List<dynamic> getJsonFromData(String rawData) {
-    var jsonData = jsonDecode(rawData);
-    return jsonData;
-  }
+  List<dynamic> getJsonFromData(String rawData) => jsonDecode(rawData);
 
   List<PokeJishoEntry> getEntriesFromJson(jsonData) => List.generate(
-      jsonData.length, (i) => PokeJishoEntry.fromJson(jsonData[i]));
+        jsonData.length,
+        (i) => PokeJishoEntry.fromJson(jsonData[i]),
+      );
 
-  Future<List<PokeJishoEntry>> getEntries() async {
-    final rawData = await getRawFileData();
-    final jsonData = await getJsonFromData(rawData);
-    final entries = await getEntriesFromJson(jsonData);
-    return entries;
-  }
+  Future<List<PokeJishoEntry>> getEntries() async => getEntriesFromJson(
+        getJsonFromData(
+          await getRawFileData(),
+        ),
+      );
 }

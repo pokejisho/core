@@ -23,6 +23,12 @@ void main() {
       expect(results[0].english, 'Pikachu');
     });
 
+    test('Can find Mega Punch in English by searching "    Mega punch ', () {
+      final results = pokeJishoCore.find('    Mega punch ');
+
+      expect(results[0].english, 'Mega Punch');
+    });
+
     test('Can return a random entry.', () {
       final entry = pokeJishoCore.random();
 
