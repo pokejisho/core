@@ -5,11 +5,24 @@ class SearchService {
 
   SearchService({this.entries});
 
-  List<PokeJishoEntry> find(String searchString) => entries
-      .where(
-          (entry) => entry.consolidate().contains(searchString.toLowerCase()))
+  List<PokeJishoEntry> find(String searchTerm) => entries
+      .where((entry) => entry.consolidate().contains(searchTerm.toLowerCase()))
       .toList()
         ..sort((a, b) => b
-            .getExactMatchLength(searchString)
-            .compareTo(a.getExactMatchLength(searchString)));
+            .getExactMatchLength(searchTerm)
+            .compareTo(a.getExactMatchLength(searchTerm)));
+
+  String normalize(String phrase) => phrase
+      .toLowerCase()
+      .trim()
+      .replaceAll(
+        RegExp(r'\s+'),
+        '',
+      )
+      .replaceAllMapped(
+        RegExp(r'[ぁ-ん]'),
+        (Match m) => String.fromCharCode(
+          m[0].toString().codeUnitAt(0) + 0x60,
+        ),
+      );
 }
