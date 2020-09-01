@@ -1,6 +1,6 @@
 name: pokejisho_core
 description: A Dart core for PokéJisho projects.
-version: 0.0.1
+version: 0.0.2
 homepage: https://michaelcharl.es/aubrey
 
 environment:
