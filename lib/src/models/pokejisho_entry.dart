@@ -51,7 +51,7 @@ class PokeJishoEntry {
 
   int getExactMatchLength(String searchString) => consolidate()
       .split(' ')
-      .where((entryData) => entryData == searchString)
+      .where((entryData) => entryData == searchString.toLowerCase())
       .toList()
       .length;
 }
